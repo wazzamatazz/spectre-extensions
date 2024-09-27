@@ -1,0 +1,20 @@
+<Project>
+
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <EnablePackageVersionOverride>false</EnablePackageVersionOverride>
+    <NoWarn>NU1507;$(NoWarn)</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.NET.Test.SDK" Version="17.11.1" />
+    <PackageVersion Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" />
+    <PackageVersion Include="MSTest.TestAdapter" Version="3.6.0" />
+    <PackageVersion Include="MSTest.TestFramework" Version="3.6.0" />
+  </ItemGroup>
+  
+</Project>

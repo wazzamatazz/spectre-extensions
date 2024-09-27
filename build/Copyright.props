@@ -1,0 +1,19 @@
+
+<Project>
+  <PropertyGroup>
+    <CopyrightStartYear Condition=" '$(CopyrightStartYear)' == '' Or '$(CopyrightStartYear)' == '{{COPYRIGHT_START_YEAR}}' ">$([System.DateTime]::UtcNow.Year)</CopyrightStartYear>
+  </PropertyGroup>
+
+  <Choose>
+    <When Condition=" $([System.DateTime]::UtcNow.Year) > $(CopyrightStartYear) ">
+      <PropertyGroup>
+        <Copyright>Copyright © $(CopyrightStartYear)-$([System.DateTime]::UtcNow.Year) $(Authors)</Copyright>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <Copyright>Copyright © $(CopyrightStartYear) $(Authors)</Copyright>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+</Project>
