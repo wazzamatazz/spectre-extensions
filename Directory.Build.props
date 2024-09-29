@@ -7,13 +7,12 @@
   <Import Project="$(ParentProject)" Condition=" '$(ParentProject)' != '' " /> 
 
   <PropertyGroup>
-    <Authors>{{AUTHORS}}</Authors>
-    <Company>{{COMPANY_NAME}}</Company>
-    <PackageProjectUrl>https://github.com/{{GITHUB_USER_OR_ORG_NAME}}/{{REPO_NAME}}</PackageProjectUrl>
+    <Authors>Graham Watts</Authors>
+    <PackageProjectUrl>https://github.com/wazzamatazz/spectre-extensions</PackageProjectUrl>
     <PackageOutputPath>$(MSBuildThisFileDirectory)artifacts\packages\$(Configuration)</PackageOutputPath>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <NeutralLanguage>en</NeutralLanguage>
-    <CopyrightStartYear>{{COPYRIGHT_START_YEAR}}</CopyrightStartYear>
+    <CopyrightStartYear>2024</CopyrightStartYear>
   </PropertyGroup>
 
   <!-- Set copyright notice based on CopyrightStartYear property. -->
