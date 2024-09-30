@@ -1,12 +1,16 @@
 ﻿using ExampleCommandApp;
 
+using Jaahas.Spectre.Extensions.Logging;
+
 using Spectre.Console.Cli;
 
 var builder = Host.CreateApplicationBuilder(args);
 
-builder.Services.AddSpectreCommandApp(options => {
+builder.Logging.ClearProviders()
+    .AddSpectreConsole();
+
+builder.Services.AddSpectreCommandApp<HelloCommand>(options => {
     options.SetApplicationName("HelloCommandApp");
-    options.AddCommand<HelloCommand>("hello");
 });
 
 builder.Services.AddTransient<HelloService>();
