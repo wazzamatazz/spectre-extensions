@@ -21,6 +21,11 @@ namespace Jaahas.Spectre.Extensions.Logging {
         /// </summary>
         private readonly SpectreConsoleLoggerOptions _options;
 
+        /// <summary>
+        /// The minimum log level to use.
+        /// </summary>
+        public LogLevel? MinimumLogLevel => _options.MinimumLogLevel;
+
 
         /// <summary>
         /// Creates a new <see cref="SpectreConsoleFormatter"/> with the specified options.

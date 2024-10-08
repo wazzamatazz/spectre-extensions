@@ -7,7 +7,7 @@ using Spectre.Console.Cli;
 var builder = Host.CreateApplicationBuilder(args);
 
 builder.Logging.ClearProviders()
-    .AddSpectreConsole();
+    .AddSpectreConsole(builder.Configuration);
 
 builder.Services.AddSpectreCommandApp<HelloCommand>(options => {
     options.SetApplicationName("HelloCommandApp");
