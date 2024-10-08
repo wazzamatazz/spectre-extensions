@@ -1,4 +1,6 @@
-﻿using Spectre.Console;
+﻿using Microsoft.Extensions.Logging;
+
+using Spectre.Console;
 
 namespace Jaahas.Spectre.Extensions.Logging {
 
@@ -6,6 +8,11 @@ namespace Jaahas.Spectre.Extensions.Logging {
     /// Options for a Spectre console logger.
     /// </summary>
     public class SpectreConsoleLoggerOptions {
+
+        /// <summary>
+        /// The minimum log level for <see cref="SpectreConsoleLogger"/> instances.
+        /// </summary>
+        public LogLevel? MinimumLogLevel { get; set; }
 
         /// <summary>
         /// The style to use for critical log messages.
