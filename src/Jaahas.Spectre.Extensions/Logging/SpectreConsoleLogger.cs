@@ -30,6 +30,10 @@ namespace Jaahas.Spectre.Extensions.Logging {
 
         /// <inheritdoc/>
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter) {
+            if (!IsEnabled(logLevel)) {
+                return;
+            }
+
             // Do not pass the exception here; we'll write it below using AnsiConsole.WriteException
             // if it is non-null.
             var message = formatter(state, null);
@@ -38,7 +42,7 @@ namespace Jaahas.Spectre.Extensions.Logging {
 
 
         /// <inheritdoc/>
-        public bool IsEnabled(LogLevel logLevel) => logLevel != LogLevel.None;
+        public bool IsEnabled(LogLevel logLevel) => logLevel != LogLevel.None && (!Formatter.MinimumLogLevel.HasValue || logLevel >= Formatter.MinimumLogLevel.Value);
 
 
         /// <inheritdoc/>
