@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Jaahas.Spectre.Extensions\Jaahas.Spectre.Extensions.csproj" />
+    <ProjectReference Include="..\..\src\Jaahas.Spectre.Extensions.Hosting\Jaahas.Spectre.Extensions.Hosting.csproj" />
   </ItemGroup>
 
   <ItemGroup>
