@@ -1,0 +1,25 @@
+<Solution>
+  <Folder Name="/build/">
+    <File Path="build/version.json" />
+  </Folder>
+  <Folder Name="/common/">
+    <File Path=".gitignore" />
+    <File Path="build.cake" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="Directory.Packages.props" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/ExampleCommandApp/ExampleCommandApp.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Jaahas.Spectre.Extensions.Hosting/Jaahas.Spectre.Extensions.Hosting.csproj" />
+    <Project Path="src/Jaahas.Spectre.Extensions.Logging/Jaahas.Spectre.Extensions.Logging.csproj" />
+    <Project Path="src/Jaahas.Spectre.Extensions/Jaahas.Spectre.Extensions.csproj" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/Jaahas.Spectre.Extensions.Tests/Jaahas.Spectre.Extensions.Tests.csproj" />
+  </Folder>
+</Solution>
