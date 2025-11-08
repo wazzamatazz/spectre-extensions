@@ -15,7 +15,7 @@ namespace ExampleCommandApp {
         }
 
 
-        public override int Execute(CommandContext context, Settings settings) {
+        public override int Execute(CommandContext context, Settings settings, CancellationToken cancellationToken) {
             AnsiConsole.WriteLine(_helloService.Greet(settings.Name));
             AnsiConsole.WriteLine();
 

@@ -162,10 +162,10 @@ namespace Microsoft.Extensions.Hosting {
         ///   The command arguments.
         /// </param>
         /// <param name="cancellationToken">
-        ///   The cancellation token to use when starting the host.
+        ///   The cancellation token for the command app.
         /// </param>
         /// <returns>
-        ///   The exit code of the command.
+        ///   The exit code of the command app.
         /// </returns>
         /// <exception cref="ArgumentNullException">
         ///   <paramref name="builder"/> is <see langword="null"/>.
@@ -184,7 +184,10 @@ namespace Microsoft.Extensions.Hosting {
             using var host = builder.Build();
             await host.StartAsync(cancellationToken).ConfigureAwait(false);
 
-            return await host.Services.RunSpectreCommandAppAsync(args).ConfigureAwait(false);
+            var lifetime = host.Services.GetRequiredService<IHostApplicationLifetime>();
+            using var ctSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, lifetime.ApplicationStopping);
+            
+            return await host.Services.RunSpectreCommandAppAsync(args, ctSource.Token).ConfigureAwait(false);
         }
 
 
@@ -201,10 +204,10 @@ namespace Microsoft.Extensions.Hosting {
         ///   The command arguments.
         /// </param>
         /// <param name="cancellationToken">
-        ///   The cancellation token to use when starting the host.
+        ///   The cancellation token for the command app.
         /// </param>
         /// <returns>
-        ///   The exit code of the command.
+        ///   The exit code of the command app.
         /// </returns>
         /// <exception cref="ArgumentNullException">
         ///   <paramref name="builder"/> is <see langword="null"/>.
@@ -222,8 +225,11 @@ namespace Microsoft.Extensions.Hosting {
 
             using var host = builder.Build();
             await host.StartAsync(cancellationToken).ConfigureAwait(false);
+            
+            var lifetime = host.Services.GetRequiredService<IHostApplicationLifetime>();
+            using var ctSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, lifetime.ApplicationStopping);
 
-            return await host.Services.RunSpectreCommandAppAsync<TDefaultCommand>(args).ConfigureAwait(false);
+            return await host.Services.RunSpectreCommandAppAsync<TDefaultCommand>(args, ctSource.Token).ConfigureAwait(false);
         }
 
 
@@ -237,10 +243,10 @@ namespace Microsoft.Extensions.Hosting {
         ///   The command arguments.
         /// </param>
         /// <param name="cancellationToken">
-        ///   The cancellation token to use when starting the host.
+        ///   The cancellation token for the command app.
         /// </param>
         /// <returns>
-        ///   The exit code of the command.
+        ///   The exit code of the command app.
         /// </returns>
         /// <exception cref="ArgumentNullException">
         ///   <paramref name="builder"/> is <see langword="null"/>.
@@ -258,8 +264,11 @@ namespace Microsoft.Extensions.Hosting {
 
             using var host = builder.Build();
             await host.StartAsync(cancellationToken).ConfigureAwait(false);
+            
+            var lifetime = host.Services.GetRequiredService<IHostApplicationLifetime>();
+            using var ctSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, lifetime.ApplicationStopping);
 
-            return await host.Services.RunSpectreCommandAppAsync(args).ConfigureAwait(false);
+            return await host.Services.RunSpectreCommandAppAsync(args, ctSource.Token).ConfigureAwait(false);
         }
 
 
@@ -276,10 +285,10 @@ namespace Microsoft.Extensions.Hosting {
         ///   The command arguments.
         /// </param>
         /// <param name="cancellationToken">
-        ///   The cancellation token to use when starting the host.
+        ///   The cancellation token for the command app.
         /// </param>
         /// <returns>
-        ///   The exit code of the command.
+        ///   The exit code of the command app.
         /// </returns>
         /// <exception cref="ArgumentNullException">
         ///   <paramref name="builder"/> is <see langword="null"/>.
@@ -297,8 +306,11 @@ namespace Microsoft.Extensions.Hosting {
 
             using var host = builder.Build();
             await host.StartAsync(cancellationToken).ConfigureAwait(false);
+            
+            var lifetime = host.Services.GetRequiredService<IHostApplicationLifetime>();
+            using var ctSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, lifetime.ApplicationStopping);
 
-            return await host.Services.RunSpectreCommandAppAsync<TDefaultCommand>(args).ConfigureAwait(false);
+            return await host.Services.RunSpectreCommandAppAsync<TDefaultCommand>(args, ctSource.Token).ConfigureAwait(false);
         }
 
     }
