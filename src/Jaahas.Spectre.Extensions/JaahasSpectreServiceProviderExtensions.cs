@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -21,8 +22,11 @@ namespace System {
         /// <param name="args">
         ///   The command arguments.
         /// </param>
+        /// <param name="cancellationToken">
+        ///   The cancellation token to pass to the command app.
+        /// </param>
         /// <returns>
-        ///   The exit code of the command.
+        ///   The exit code of the command app.
         /// </returns>
         /// <exception cref="ArgumentNullException">
         ///   <paramref name="provider"/> is <see langword="null"/>.
@@ -30,7 +34,7 @@ namespace System {
         /// <exception cref="ArgumentNullException">
         ///   <paramref name="args"/> is <see langword="null"/>.
         /// </exception>
-        public static async Task<int> RunSpectreCommandAppAsync(this IServiceProvider provider, IEnumerable<string> args) {
+        public static async Task<int> RunSpectreCommandAppAsync(this IServiceProvider provider, IEnumerable<string> args, CancellationToken cancellationToken = default) {
             if (provider == null) {
                 throw new ArgumentNullException(nameof(provider));
             }
@@ -41,7 +45,7 @@ namespace System {
             using var scope = provider.CreateScope();
             var commandApp = scope.ServiceProvider.GetRequiredService<CommandApp>();
 
-            return await commandApp.RunAsync(args).ConfigureAwait(false);
+            return await commandApp.RunAsync(args, cancellationToken).ConfigureAwait(false);
         }
 
 
@@ -57,8 +61,11 @@ namespace System {
         /// <param name="args">
         ///   The command arguments.
         /// </param>
+        /// <param name="cancellationToken">
+        ///   The cancellation token to pass to the command app.
+        /// </param>
         /// <returns>
-        ///   The exit code of the command.
+        ///   The exit code of the command app.
         /// </returns>
         /// <exception cref="ArgumentNullException">
         ///   <paramref name="provider"/> is <see langword="null"/>.
@@ -66,7 +73,7 @@ namespace System {
         /// <exception cref="ArgumentNullException">
         ///   <paramref name="args"/> is <see langword="null"/>.
         /// </exception>
-        public static async Task<int> RunSpectreCommandAppAsync<TDefaultCommand>(this IServiceProvider provider, IEnumerable<string> args) where TDefaultCommand : class, ICommand {
+        public static async Task<int> RunSpectreCommandAppAsync<TDefaultCommand>(this IServiceProvider provider, IEnumerable<string> args, CancellationToken cancellationToken = default) where TDefaultCommand : class, ICommand {
             if (provider == null) {
                 throw new ArgumentNullException(nameof(provider));
             }
@@ -77,7 +84,7 @@ namespace System {
             using var scope = provider.CreateScope();
             var commandApp = scope.ServiceProvider.GetRequiredService<CommandApp<TDefaultCommand>>();
 
-            return await commandApp.RunAsync(args).ConfigureAwait(false);
+            return await commandApp.RunAsync(args, cancellationToken).ConfigureAwait(false);
         }
 
     }
