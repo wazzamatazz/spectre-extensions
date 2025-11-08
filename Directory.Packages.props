@@ -17,6 +17,6 @@
     <PackageVersion Include="MSTest" Version="3.9.3" />
     <PackageVersion Include="PolySharp" Version="1.15.0" />
     <PackageVersion Include="Spectre.Console.Cli" Version="0.53.0" />
-    <PackageVersion Include="Spectre.Console.Testing" Version="0.50.0" />
+    <PackageVersion Include="Spectre.Console.Testing" Version="0.53.0" />
   </ItemGroup>
 </Project>
